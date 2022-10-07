@@ -1,0 +1,14 @@
+---
+- hosts: all
+  tasks:
+    - name: Copying SQL query file to remote machines
+      win_copy:
+        src: "cacheHitRatios.sql"
+        dest: C:\Users\Administrator.SQL\cacheHitRatios.sql
+      
+    - name: 'select from SQL server DB'
+      win_shell: "invoke-sqlcmd -Inputfile 'cacheHitRatios.sql' | ConvertTo-Json"
+      register: response      
+
+    - debug:
+        msg: "{{ response.stdout |from_json }}"

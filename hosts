@@ -1,0 +1,10 @@
+[windows_mssql]
+192.168.56.202 ansible_python_interpreter=/usr/bin/python3
+192.168.56.202 ansible_python_interpreter=/usr/bin/python3
+
+[windows_mssql:vars]
+ansible_user=SQL\Administrator
+ansible_password=admin@12345
+ansible_connection=winrm
+ansible_winrm_transport=ntlm
+ansible_winrm_server_cert_validation=ignore
